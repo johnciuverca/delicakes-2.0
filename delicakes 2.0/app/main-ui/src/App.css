@@ -1,0 +1,57 @@
+.app-shell {
+    min-height: 100vh;
+    padding: 32px;
+    background: #fff8f2;
+    color: #2f2018;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.brand-name {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.main-nav {
+    display: flex;
+    gap: 18px;
+}
+
+.main-nav a {
+    color: #2f2018;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.hero-section {
+    max-width: 720px;
+    margin: 120px auto 0;
+    text-align: center;
+}
+
+.eyebrow {
+    margin: 0 0 16px;
+    color: #9a5b36;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.hero-section h1 {
+    margin: 0;
+    font-size: 48px;
+    line-height: 1.1;
+}
+
+.hero-copy {
+    margin: 24px auto 0;
+    max-width: 560px;
+    font-size: 18px;
+    line-height: 1.6;
+}

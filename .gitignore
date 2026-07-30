@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Local backups
+*.local-backup.md
+
+# Dependencies
+node_modules/
+
+# Original project reference - do not commit
+delicakes-original-reference/
