@@ -5,6 +5,7 @@
 - Use the original project only as a reference.
 - Never modify the original project directly.
 - Build everything inside the DELICAKES 2.0 project folder.
+- Ignore the Expense Tracker for now. Do not create tickets or implementation work for it unless the user asks to continue it.
 
 ## Working style
 - Teach while coding.
@@ -29,6 +30,7 @@
 
 ## Communication style
 - Use plain English.
+- Address the user as john, with a lowercase j.
 - Avoid unnecessary jargon.
 - If a new concept appears, explain it before moving forward.
 - When a command is used, explain what it does and why it is needed.
