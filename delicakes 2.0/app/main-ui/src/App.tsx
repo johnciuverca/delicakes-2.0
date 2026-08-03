@@ -1,16 +1,42 @@
-import { Route, Routes } from 'react-router-dom'
+import { NavLink, Route, Routes } from 'react-router-dom'
 import './App.css'
 
 function App() {
   return (
     <main className="app-shell">
       <header className="site-header">
-        <p className="brand-name">DELICAKES</p>
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) => `brand-name${isActive ? ' active' : ''}`}
+        >
+          DELICAKES
+        </NavLink>
         <nav className="main-nav" aria-label="Main navigation">
-          <a href="#home">Home</a>
-          <a href="#recipes">Recipes</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <NavLink
+            to="/recipes"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Recipes
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Contact
+          </NavLink>
+          <NavLink
+            to="/login"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Login
+          </NavLink>
         </nav>
       </header>
       <Routes>
@@ -21,7 +47,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
       </Routes>
     </main>
-  )
+  );
 }
 
 function HomePage() {
