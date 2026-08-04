@@ -89,3 +89,28 @@
       object-fit: cover;
       border-radius: 8px;
   }
+
+  .cake-carousel {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 20px;
+      max-width: 760px;
+      margin: 0 auto;
+  }
+
+  .cake-carousel img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 8px;
+  }
+
+  .cake-carousel button {
+      padding: 10px 16px;
+      border: 1px solid #9a5b36;
+      border-radius: 6px;
+      background: #fff;
+      color: #2f2018;
+      cursor: pointer;
+  }
