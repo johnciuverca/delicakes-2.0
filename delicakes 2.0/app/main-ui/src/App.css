@@ -67,3 +67,25 @@
     text-decoration: underline;
     text-underline-offset: 4px;
 }
+
+  .gallery-section {
+      max-width: 1100px;
+      margin: 80px auto 0;
+  }
+
+  .gallery-section h1 {
+      margin-bottom: 24px;
+  }
+
+  .cake-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+  }
+
+  .cake-gallery img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 8px;
+  }

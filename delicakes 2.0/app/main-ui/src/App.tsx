@@ -1,6 +1,15 @@
 import { NavLink, Route, Routes } from 'react-router-dom'
 import './App.css'
 
+const cakeImages = [
+    { src: '/cakes/1.jpeg', alt: 'Decorated chocolate cake' },
+    { src: '/cakes/2.jpeg', alt: 'Celebration cake with frosting' },
+    { src: '/cakes/3.jpeg', alt: 'Layered cake with fruit' },
+    { src: '/cakes/4.jpeg', alt: 'Homemade cake with cream decoration' },
+    { src: '/cakes/5.jpeg', alt: 'Decorated dessert cake' },
+    { src: '/cakes/6.jpeg', alt: 'Custom cake with colorful decoration' }
+]
+
 function App() {
   return (
     <main className="app-shell">
@@ -51,7 +60,17 @@ function App() {
 }
 
 function HomePage() {
-  return <h1>Home</h1>
+  return (
+    <section className='gallery-section'>
+        <h1>Our Cakes</h1>
+
+        <div className='cake-gallery'>
+            {cakeImages.map((cake) => (
+                <img key={cake.src} src={cake.src} alt={cake.alt} />
+            ))}
+        </div>
+    </section>
+  )
 }
 
 function RecipesPage() {
