@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import './App.css'
 
@@ -11,6 +12,7 @@ const cakeImages = [
 ]
 
 function App() {
+
   return (
     <main className="app-shell">
       <header className="site-header">
@@ -60,14 +62,26 @@ function App() {
 }
 
 function HomePage() {
+
+const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const showPreviousImage = () => {
+    setCurrentImageIndex((currentIndex) => currentIndex ===0 ? cakeImages.length - 1 : currentIndex - 1);
+}
+const showNextImage = () => {
+    setCurrentImageIndex((currentIndex) => currentIndex === cakeImages.length - 1 ? 0 : currentIndex + 1);
+}
   return (
     <section className='gallery-section'>
         <h1>Our Cakes</h1>
-
-        <div className='cake-gallery'>
-            {cakeImages.map((cake) => (
-                <img key={cake.src} src={cake.src} alt={cake.alt} />
-            ))}
+        <div className='cake-carousel'>
+            <button type='button' onClick={showPreviousImage}>
+                Previous
+            </button>
+            <img src={cakeImages[currentImageIndex].src}
+                      alt={cakeImages[currentImageIndex].alt} />
+            <button type='button' onClick={showNextImage}>
+                Next
+            </button>
         </div>
     </section>
   )
