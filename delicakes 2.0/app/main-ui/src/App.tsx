@@ -104,7 +104,14 @@ function RecipesPage() {
 }
 
 function AboutPage() {
-  return <h1>About</h1>
+  return (
+    <section className='about-section'>
+        <h1>About DELICAKES</h1>
+        <p>DELICAKES creates handmade cakes for special moments</p>
+        <p>We focus on thoughtful designs, quality ingredients and delicious results</p>
+    </section>
+  );
+
 }
 
 function ContactPage() {
