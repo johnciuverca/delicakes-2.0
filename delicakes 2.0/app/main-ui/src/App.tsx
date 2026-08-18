@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import './App.css'
 
@@ -70,6 +70,18 @@ const showPreviousImage = () => {
 const showNextImage = () => {
     setCurrentImageIndex((currentIndex) => currentIndex === cakeImages.length - 1 ? 0 : currentIndex + 1);
 }
+
+useEffect(() => {
+    const timerId = window.setInterval(() => {
+        setCurrentImageIndex((currentIndex) =>
+            currentIndex === cakeImages.length - 1 ? 0 : currentIndex + 1
+        );
+    }, 5000);
+    return () => {
+        window.clearInterval(timerId);
+    };
+}, []);
+
   return (
     <section className='gallery-section'>
         <h1>Our Cakes</h1>
