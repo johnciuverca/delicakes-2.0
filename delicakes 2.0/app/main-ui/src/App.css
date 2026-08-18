@@ -114,3 +114,9 @@
       color: #2f2018;
       cursor: pointer;
   }
+
+  .about-section {
+      max-width: 720px;
+      margin: 80px auto 0;
+      line-height: 1.6;
+  }
