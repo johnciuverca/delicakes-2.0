@@ -137,6 +137,7 @@ function ContactPage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
             />
         </label>
         <label>
@@ -145,6 +146,7 @@ function ContactPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
             />
         </label>
         <label>
@@ -152,6 +154,7 @@ function ContactPage() {
             <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                required
             />
         </label>
         <button type="submit">Send</button>
