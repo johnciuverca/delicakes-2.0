@@ -115,7 +115,53 @@ function AboutPage() {
 }
 
 function ContactPage() {
-  return <h1>Contact</h1>
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [submitted, setSubmitted] = useState(false);
+  return (
+    <>
+    <form
+        className="contact-form"
+        onSubmit={(e) => {
+            e.preventDefault();
+            if (name && email && message) {
+                setSubmitted(true);
+            }
+        }}
+    >
+        <h1>Contact</h1>
+        <label>
+            Name
+            <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+            />
+        </label>
+        <label>
+            Email
+            <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+        </label>
+        <label>
+            Message
+            <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+            />
+        </label>
+        <button type="submit">Send</button>
+        {submitted && <p>Thank you for your message!</p>}
+    </form>
+    </>
+  )
 }
 
 function LoginPage() {
