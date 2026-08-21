@@ -165,7 +165,45 @@ function ContactPage() {
 }
 
 function LoginPage() {
-  return <h1>Login</h1>
+  const [email, setEmail] = useState('');
+  const[password, setPassword] = useState('');
+  const[feedback, setFeedback] = useState('');
+  return (
+    <form
+    className="login-form"
+    onSubmit={(e) => {
+        e.preventDefault();
+        if(!email || !password) {
+            setFeedback('Please enter both your email and password.');
+            return;
+        }
+        setFeedback('Login details submitted successfully!');
+        }
+    }
+    >
+        <h1>Login</h1>
+        <label>
+            Email
+            <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+        </label>
+        <label>
+            Password
+            <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+            />
+        </label>
+        <button type="submit">Log In</button>
+        {feedback && <p>{feedback}</p>}
+    </form>
+  )
 }
 
 export default App
