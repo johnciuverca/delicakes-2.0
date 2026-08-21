@@ -171,6 +171,7 @@ function LoginPage() {
   return (
     <form
     className="login-form"
+    noValidate
     onSubmit={(e) => {
         e.preventDefault();
         if(!email || !password) {
