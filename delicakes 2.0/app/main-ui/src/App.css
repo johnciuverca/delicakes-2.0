@@ -152,3 +152,46 @@
        padding: 10px;
        font: inherit;
    }
+
+   .recipes-section {
+       max-width: 1100px;
+       margin: 80px auto 0;
+   }
+
+   .recipe-grid {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       gap: 24px;
+   }
+
+   .recipe-card {
+       overflow: hidden;
+       border-radius: 8px;
+       background: #fff;
+       box-shadow: 0 4px 12px rgb(47 32 24 / 10%);
+   }
+
+   .recipe-card img {
+       width: 100%;
+       aspect-ratio: 3 / 4;
+       object-fit: cover;
+   }
+
+   .recipe-card h2,
+   .recipe-card p {
+       margin-right: 16px;
+       margin-left: 16px;
+   }
+
+   .recipe-card h2 {
+       margin-bottom: 8px;
+   }
+
+   .recipe-category {
+       color: #9a5b36;
+       font-weight: 700;
+   }
+
+   .recipe-card p:last-child {
+       line-height: 1.5;
+   }

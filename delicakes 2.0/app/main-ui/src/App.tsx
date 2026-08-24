@@ -11,6 +11,28 @@ const cakeImages = [
     { src: '/cakes/6.jpeg', alt: 'Custom cake with colorful decoration' }
 ]
 
+ const recipes = [
+   {
+     title: "Chocolate Celebration Cake",
+     category: "Cakes",
+     description:
+       "A rich chocolate cake finished with smooth chocolate frosting.",
+     image: "/cakes/1.jpeg",
+   },
+   {
+     title: "Fresh Fruit Cake",
+     category: "Cakes",
+     description: "A light layered cake decorated with fresh seasonal fruit.",
+     image: "/cakes/3.jpeg",
+   },
+   {
+     title: "Classic Cream Cake",
+     category: "Cakes",
+     description: "A soft sponge cake covered with delicate cream decoration.",
+     image: "/cakes/4.jpeg",
+   },
+ ];
+
 function App() {
 
   return (
@@ -100,7 +122,22 @@ useEffect(() => {
 }
 
 function RecipesPage() {
-  return <h1>Recipes</h1>
+  return (
+    <section className='recipes-section'>
+        <h1>Recipes</h1>
+
+        <div className = 'recipes-grid'>
+            {recipes.map(recipe => (
+                <article className='recipe-card' key={recipe.title}>
+                    <img src={recipe.image} alt={recipe.title} />
+                    <h2>{recipe.title}</h2>
+                    <p className='recipe-category'>{recipe.category}</p>
+                    <p>{recipe.description}</p>
+                </article>
+                ))}
+        </div>
+    </section>
+  )
 }
 
 function AboutPage() {
