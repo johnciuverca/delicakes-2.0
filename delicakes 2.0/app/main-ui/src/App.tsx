@@ -56,6 +56,12 @@ function App() {
           >
             Login
           </NavLink>
+          <NavLink
+            to="/register"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Register
+          </NavLink>
         </nav>
       </header>
       <Routes>
@@ -64,6 +70,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </main>
   );
@@ -258,6 +265,82 @@ function LoginPage() {
         {feedback && <p>{feedback}</p>}
     </form>
   )
+}
+
+function RegisterPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [feedback, setFeedback] = useState("");
+
+  return (
+    <form
+      className="register-form"
+      noValidate
+      onSubmit={(event) => {
+        event.preventDefault();
+
+        if (!name || !email || !password || !confirmPassword) {
+          setFeedback("Please complete all fields.");
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          setFeedback("Passwords do not match.");
+          return;
+        }
+
+        setFeedback("Registration details submitted successfully!");
+      }}
+    >
+      <h1>Register</h1>
+
+      <label>
+        Name
+        <input
+          type="text"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          required
+        />
+      </label>
+
+      <label>
+        Email
+        <input
+          type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          required
+        />
+      </label>
+
+      <label>
+        Password
+        <input
+          type="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          required
+        />
+      </label>
+
+      <label>
+        Confirm Password
+        <input
+          type="password"
+          value={confirmPassword}
+          onChange={(event) => setConfirmPassword(event.target.value)}
+          required
+        />
+      </label>
+
+      <button type="submit">Register</button>
+
+      {feedback && <p>{feedback}</p>}
+    </form>
+  );
 }
 
 export default App
