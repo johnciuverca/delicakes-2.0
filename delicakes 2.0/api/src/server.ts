@@ -2,6 +2,10 @@ import express from "express";
 
 const app = express()
 const port = 3100
+app.use((_request, response, next) => {
+    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+    next();
+});
 
  const recipes = [
    {

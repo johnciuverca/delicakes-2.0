@@ -11,27 +11,13 @@ const cakeImages = [
     { src: '/cakes/6.jpeg', alt: 'Custom cake with colorful decoration' }
 ]
 
- const recipes = [
-   {
-     title: "Chocolate Celebration Cake",
-     category: "Cakes",
-     description:
-       "A rich chocolate cake finished with smooth chocolate frosting.",
-     image: "/cakes/1.jpeg",
-   },
-   {
-     title: "Fresh Fruit Cake",
-     category: "Cakes",
-     description: "A light layered cake decorated with fresh seasonal fruit.",
-     image: "/cakes/3.jpeg",
-   },
-   {
-     title: "Classic Cream Cake",
-     category: "Cakes",
-     description: "A soft sponge cake covered with delicate cream decoration.",
-     image: "/cakes/4.jpeg",
-   },
- ];
+ type Recipe = {
+    id: number
+    title: string
+    category: string
+    description: string
+    image: string
+  }
 
 function App() {
 
@@ -122,13 +108,43 @@ useEffect(() => {
 }
 
 function RecipesPage() {
+    const [recipes, setRecipes] = useState<Recipe[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState("")
+
+    useEffect(() => {
+        fetch('http://localhost:3100/recipes')
+            .then((response) => {
+                if(!response.ok) {
+                    throw new Error('Unable to load recipes.')
+                }
+                return response.json();
+            })
+            .then((data: Recipe[]) => {
+                setRecipes(data);
+                setIsLoading(false);
+            })
+            .catch(() => {
+                setError('Unable to load recipes.');
+                setIsLoading(false);
+            })
+    }, []);
+
+    if (isLoading) {
+        return <p>Loading recipes...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
   return (
     <section className='recipes-section'>
         <h1>Recipes</h1>
 
-        <div className = 'recipes-grid'>
+        <div className = 'recipe-grid'>
             {recipes.map(recipe => (
-                <article className='recipe-card' key={recipe.title}>
+                <article className='recipe-card' key={recipe.id}>
                     <img src={recipe.image} alt={recipe.title} />
                     <h2>{recipe.title}</h2>
                     <p className='recipe-category'>{recipe.category}</p>
