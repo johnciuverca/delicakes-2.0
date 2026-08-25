@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import './App.css'
+import { useUser } from './useUser'
 
 const cakeImages = [
     { src: '/cakes/1.jpeg', alt: 'Decorated chocolate cake' },
@@ -164,11 +165,13 @@ function RecipesPage() {
 }
 
 function AboutPage() {
+    const {user} = useUser();
   return (
     <section className='about-section'>
         <h1>About DELICAKES</h1>
         <p>DELICAKES creates handmade cakes for special moments</p>
         <p>We focus on thoughtful designs, quality ingredients and delicious results</p>
+        <p>{user ? `Signed in as ${user.name}` : 'No user is currently signed in.'}</p>
     </section>
   );
 
