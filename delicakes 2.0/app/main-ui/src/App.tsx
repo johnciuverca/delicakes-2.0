@@ -242,6 +242,10 @@ function LoginPage() {
             setFeedback('Please enter both your email and password.');
             return;
         }
+        if( !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setFeedback('Please enter a valid email address.');
+            return;
+        }
         setUser({ name: email.split('@')[0], email });
         setFeedback(`Logged in as ${email}`);
         }
@@ -296,7 +300,6 @@ function RegisterPage() {
           setFeedback("Passwords do not match.");
           return;
         }
-
         setFeedback("Registration details submitted successfully!");
       }}
     >
