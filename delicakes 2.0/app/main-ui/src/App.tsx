@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { NavLink, Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import { useUser } from './useUser'
 
@@ -63,6 +63,12 @@ function App() {
           >
             Register
           </NavLink>
+          <NavLink
+            to="/profile"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Profile
+          </NavLink>
         </nav>
       </header>
       <Routes>
@@ -72,6 +78,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </main>
   );
@@ -275,6 +282,36 @@ function LoginPage() {
         {feedback && <p>{feedback}</p>}
     </form>
   )
+}
+
+function ProfilePage() {
+  const { user, setUser } = useUser();
+  const navigate = useNavigate();
+
+    if (!user) {
+        return (
+            <section className="profile-section">
+                <h1>Profile</h1>
+                <p>No user is currently logged in.</p>
+                <NavLink to="/login">Go to Login</NavLink>
+            </section>
+        );
+    }
+
+    const handleLogout = () => {
+        setUser(null);
+        navigate('/login');
+    };
+
+    return (
+        <section className="profile-section">
+            <h1>Profile</h1>
+            <p>Logged in as {user.email}</p>
+            <button type="button" onClick={handleLogout}>
+                Log Out
+            </button>
+        </section>
+    );
 }
 
 function RegisterPage() {
