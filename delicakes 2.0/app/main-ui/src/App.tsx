@@ -231,6 +231,7 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const[password, setPassword] = useState('');
   const[feedback, setFeedback] = useState('');
+  const { setUser } = useUser();
   return (
     <form
     className="login-form"
@@ -241,7 +242,8 @@ function LoginPage() {
             setFeedback('Please enter both your email and password.');
             return;
         }
-        setFeedback('Login details submitted successfully!');
+        setUser({ name: email.split('@')[0], email });
+        setFeedback(`Logged in as ${email}`);
         }
     }
     >
@@ -265,6 +267,7 @@ function LoginPage() {
             />
         </label>
         <button type="submit">Log In</button>
+        <p>Need an account? <NavLink to="/register">Register here</NavLink></p>
         {feedback && <p>{feedback}</p>}
     </form>
   )
