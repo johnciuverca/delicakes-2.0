@@ -391,6 +391,7 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [feedback, setFeedback] = useState("");
+  const { setUser } = useUser();
 
   return (
     <form
@@ -404,11 +405,17 @@ function RegisterPage() {
           return;
         }
 
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          setFeedback("Please enter a valid email address.");
+          return;
+        }
+
         if (password !== confirmPassword) {
           setFeedback("Passwords do not match.");
           return;
         }
-        setFeedback("Registration details submitted successfully!");
+        setUser({ name, email });
+        setFeedback(`Welcome, ${name}!`);
       }}
     >
       <h1>Register</h1>
