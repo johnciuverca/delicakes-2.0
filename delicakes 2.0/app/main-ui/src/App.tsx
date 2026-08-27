@@ -391,6 +391,7 @@ function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [feedback, setFeedback] = useState("");
+  const { setUser } = useUser();
 
   return (
     <form
@@ -408,7 +409,8 @@ function RegisterPage() {
           setFeedback("Passwords do not match.");
           return;
         }
-        setFeedback("Registration details submitted successfully!");
+        setUser({ name, email });
+        setFeedback(`Welcome, ${name}!`);
       }}
     >
       <h1>Register</h1>
