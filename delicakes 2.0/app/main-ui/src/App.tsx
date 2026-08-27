@@ -405,6 +405,11 @@ function RegisterPage() {
           return;
         }
 
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          setFeedback("Please enter a valid email address.");
+          return;
+        }
+
         if (password !== confirmPassword) {
           setFeedback("Passwords do not match.");
           return;
