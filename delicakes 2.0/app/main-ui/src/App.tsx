@@ -69,6 +69,12 @@ function App() {
           >
             Profile
           </NavLink>
+          <NavLink
+            to="/change-password"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Change Password
+          </NavLink>
         </nav>
       </header>
       <Routes>
@@ -79,6 +85,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/change-password" element={<ChangePasswordPage />} />
       </Routes>
     </main>
   );
@@ -312,6 +319,70 @@ function ProfilePage() {
             </button>
         </section>
     );
+}
+
+function ChangePasswordPage() {
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [feedback, setFeedback] = useState("");
+
+  return (
+    <form
+      className="change-password-form"
+      noValidate
+      onSubmit={(event) => {
+        event.preventDefault();
+
+        if (!currentPassword || !newPassword || !confirmNewPassword) {
+          setFeedback("Please complete all fields.");
+          return;
+        }
+
+        if (newPassword !== confirmNewPassword) {
+          setFeedback("New passwords do not match.");
+          return;
+        }
+        setFeedback("Password changed successfully!");
+      }}
+    >
+      <h1>Change Password</h1>
+
+      <label>
+        Current Password
+        <input
+          type="password"
+          value={currentPassword}
+          onChange={(event) => setCurrentPassword(event.target.value)}
+          required
+        />
+      </label>
+
+      <label>
+        New Password
+        <input
+          type="password"
+          value={newPassword}
+          onChange={(event) => setNewPassword(event.target.value)}
+          required
+        />
+      </label>
+
+      <label>
+        Confirm New Password
+        <input
+          type="password"
+          value={confirmNewPassword}
+          onChange={(event) => setConfirmNewPassword(event.target.value)}
+          required
+        />
+      </label>
+
+      <button type="submit">Change Password</button>
+
+      {feedback && <p>{feedback}</p>}
+    </form>
+  );
 }
 
 function RegisterPage() {
