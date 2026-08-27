@@ -22,13 +22,15 @@ const cakeImages = [
 
 function App() {
 
+    const { user } = useUser();
+
   return (
     <main className="app-shell">
       <header className="site-header">
         <NavLink
           to="/"
           end
-          className={({ isActive }) => `brand-name${isActive ? ' active' : ''}`}
+          className={({ isActive }) => `brand-name${isActive ? " active" : ""}`}
         >
           DELICAKES
         </NavLink>
@@ -51,24 +53,29 @@ function App() {
           >
             Contact
           </NavLink>
-          <NavLink
-            to="/login"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Login
-          </NavLink>
-          <NavLink
-            to="/register"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Register
-          </NavLink>
-          <NavLink
-            to="/profile"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Profile
-          </NavLink>
+          {user ? (
+            <NavLink
+              to="/profile"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Profile
+            </NavLink>
+          ) : (
+            <>
+              <NavLink
+                to="/login"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Register
+              </NavLink>
+            </>
+          )}
           <NavLink
             to="/change-password"
             className={({ isActive }) => (isActive ? "active" : "")}
