@@ -30,7 +30,7 @@ function App() {
         <NavLink
           to="/"
           end
-          className={({ isActive }) => `brand-name${isActive ? ' active' : ''}`}
+          className={({ isActive }) => `brand-name${isActive ? " active" : ""}`}
         >
           DELICAKES
         </NavLink>
@@ -53,27 +53,29 @@ function App() {
           >
             Contact
           </NavLink>
-            {user ? (
-                <NavLink
-                    to="/profile"
-                    className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                    Profile
-                </NavLink>
-            ) : (
-                <NavLink
-                    to="/login"
-                    className={({ isActive }) => (isActive ? "active" : "")}
-                >
-                    Login
-                </NavLink>
-            )}
-          <NavLink
-            to="/register"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Register
-          </NavLink>
+          {user ? (
+            <NavLink
+              to="/profile"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Profile
+            </NavLink>
+          ) : (
+            <>
+              <NavLink
+                to="/login"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Register
+              </NavLink>
+            </>
+          )}
           <NavLink
             to="/change-password"
             className={({ isActive }) => (isActive ? "active" : "")}
