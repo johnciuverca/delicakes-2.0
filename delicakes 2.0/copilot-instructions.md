@@ -41,3 +41,13 @@
 ## Learning mode
 
 I write the code and run the commands. Codex gives me one small step at a time, with hints and explanations. Codex only changes files when I explicitly ask it to.
+
+## Learning loop
+
+For each ticket, use this simple loop:
+
+1. Before code: explain the new concept and ask john one short prediction question.
+2. While coding: let john write the code in small pieces and explain each important line.
+3. After coding: test one normal case and one broken or edge case.
+4. For debugging practice: use a small intentional bug on a separate practice branch, diagnose it with DevTools or server logs, fix it, and never merge the broken version.
+5. Keep this practical and simple. Do not require john to write a "what I learned" summary.
