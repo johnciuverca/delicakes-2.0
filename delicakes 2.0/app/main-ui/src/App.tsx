@@ -93,6 +93,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/change-password" element={<ChangePasswordPage />} />
+        <Route path="*" element={<NotFoundPage/>} />
       </Routes>
     </main>
   );
@@ -471,6 +472,16 @@ function RegisterPage() {
 
       {feedback && <p>{feedback}</p>}
     </form>
+  );
+}
+
+function NotFoundPage() {
+  return (
+    <section className="not-found-section">
+      <h1>Page Not Found</h1>
+      <p>Sorry, the page you are looking for does not exist.</p>
+      <NavLink to="/">Back to Home</NavLink>
+    </section>
   );
 }
 
